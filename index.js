@@ -5,7 +5,6 @@ const client = new Discord.Client()
 
 const config = require("./config.json")
 const mongo = require('./mongo')
-const { homedir } = require("os")
 
 
 client.on("ready", async () => {
