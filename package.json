@@ -1,0 +1,20 @@
+{
+  "name": "echo-4",
+  "version": "0.0.1",
+  "description": "Discord Bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "bot",
+    "Discord",
+    "Mongo"
+  ],
+  "author": "Rafa Puerta",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "mongoose": "^5.11.8"
+  }
+}
