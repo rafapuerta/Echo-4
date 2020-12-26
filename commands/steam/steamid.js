@@ -10,7 +10,7 @@ module.exports = {
     await mongo().then(async (mongoose) => {
       try {
         const result = await userSchema.findOne({ _id: member.id });
-        channel.send(`Tu ID de Steam es: ${result.steamID}`);
+        channel.send(`${message.member}, tu Steam ID es: **${result.steamID}**`);
       } finally {
         mongoose.connection.close();
       }

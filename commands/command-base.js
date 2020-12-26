@@ -93,7 +93,8 @@ module.exports = (client, commandOptions) => {
                   const role = guild.roles.cache.find(role => role.name === requiredRole)
 
                   if (!role || !member.roles.cache.has(role.id)){
-                      message.reply(`You must have the "${requiredRole}" role to use this command.`)
+                      message.reply(`You must have the "**${requiredRole}**" role to use this command.`)
+                      return
                   }
               }
 
@@ -110,7 +111,7 @@ module.exports = (client, commandOptions) => {
               if (arguments.length < minArgs || (
                   maxArgs !== null && arguments.length > maxArgs
               )) {
-                message.reply(`Incorrect sintax! use ${prefix}${alias} ${expectedArgs}`)
+                message.reply(`Incorrect sintax! use: **${prefix}${alias} ${expectedArgs}**`)
                 return
               }
 
