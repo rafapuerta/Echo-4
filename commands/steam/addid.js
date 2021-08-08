@@ -5,7 +5,7 @@ const userSchema = require("./../../schemas/user-schema")
 module.exports = {
     commands: ['addid'],
     expectedArgs: '<SteamID> ',
-    permissionError: 'You need admind permission to run this command',
+    permissionError: 'Necesitas permiso de administrador para utilizar este comando',
     minArgs: 1,
     maxArgs: 1,
     callback: async (message, arguments, text) => {

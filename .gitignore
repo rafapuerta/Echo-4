@@ -1,3 +1,6 @@
 /node_modules
 config.json
 AWServerEcho-4.tlp
+/.env
+/echo-4.pem
+/awsEcho-4.tlp

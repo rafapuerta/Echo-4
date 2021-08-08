@@ -15,7 +15,9 @@
   "author": "Rafa Puerta",
   "license": "MIT",
   "dependencies": {
+    "colors": "^1.4.0",
     "discord.js": "^12.5.1",
+    "dotenv": "^10.0.0",
     "mongoose": "^5.11.8"
   }
 }

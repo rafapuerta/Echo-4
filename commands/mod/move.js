@@ -1,11 +1,10 @@
 module.exports = {
     commands: ['move', 'mv'],
     expectedArgs: '<ID mensaje> <#canal de destino>',
-    permissionError: 'You need admind permission to run this command',
+    permissionError: 'Necesitas permiso de administrador para utilizar este comando',
     minArgs: 2,
     maxArgs: 2,
     callback: (message, arguments, text, client) => {
-        console.log(arguments)
         var target_message = '';
 
         if (arguments[0].search(/^(https:\/\/discord.com\/channels\/)/) >= 0) {
@@ -41,7 +40,6 @@ module.exports = {
 
                 msg.embeds.forEach( element => {
 
-                    console.log(element);
                     embeds.push(element);
 
                 }, err => {
@@ -53,7 +51,6 @@ module.exports = {
                 if (msg.attachments.size > 0) {
 
                     msg.attachments.each(a => {
-                        console.log(a);
                         attachments.push(a.proxyURL);
                     });
                 }  

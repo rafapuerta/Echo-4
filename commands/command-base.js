@@ -1,4 +1,5 @@
-const { prefix } = require("../config.json");
+require("dotenv").config()
+var colors = require("colors")
 
 const validatePermissions = (permissions) => {
     const validPermissions = [
@@ -37,7 +38,7 @@ const validatePermissions = (permissions) => {
 
     for (const permission of permissions) {
         if (!validPermissions.includes(permission)) {
-            throw new Error(`Unknown permission node "${permission}"`)
+            throw new Error(`Permiso "${permission}" desconocido`)
         }
     }
 }
@@ -46,7 +47,7 @@ module.exports = (client, commandOptions) => {
   let {
     commands,
     expectedArgs = " ",
-    permissionError = "You do not have permission to run this command",
+    permissionError = "No tienes los permisos necesarios para utilizar este comando",
     minArgs = 0,
     maxArgs = null,
     permissions = [],
@@ -59,7 +60,7 @@ module.exports = (client, commandOptions) => {
       commands = [commands]
   }
 
-  console.log(`Registering command "${commands[0]}"`)
+  console.log(colors.white(`Activando el comando: `)+ colors.green(`${commands[0]}`))
 
   //Ensure the permissions are in an array and are all valid
   if (permissions.length) {
@@ -76,7 +77,7 @@ module.exports = (client, commandOptions) => {
       const { member, content, guild} = message
 
       for (const alias of commands) {
-          if(content.toLowerCase().startsWith(`${prefix}${alias.toLowerCase()}`)){
+          if(content.toLowerCase().startsWith(`${process.env.PREFIX}${alias.toLowerCase()}`)){
               // A command has been ran
 
               // Ensure the user has the required permissions
@@ -93,7 +94,7 @@ module.exports = (client, commandOptions) => {
                   const role = guild.roles.cache.find(role => role.name === requiredRole)
 
                   if (!role || !member.roles.cache.has(role.id)){
-                      message.reply(`You must have the "**${requiredRole}**" role to use this command.`)
+                      message.reply(`Tienes que tener el rol de "**${requiredRole}**" para usar este comando.`)
                       return
                   }
               }
@@ -111,7 +112,7 @@ module.exports = (client, commandOptions) => {
               if (arguments.length < minArgs || (
                   maxArgs !== null && arguments.length > maxArgs
               )) {
-                message.reply(`Incorrect sintax! use: **${prefix}${alias} ${expectedArgs}**`)
+                message.reply(`Sintaxis incorrecta! utiliza: **${prefix}${alias} ${expectedArgs}**`)
                 return
               }
 

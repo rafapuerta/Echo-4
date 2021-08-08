@@ -1,10 +1,10 @@
-const mongoose = require('mongoose')
-const { mongoPath } = require('./config.json')
+const mongoose = require("mongoose");
+require("dotenv").config();
 
 module.exports = async () => {
-  await mongoose.connect(mongoPath, {
+  await mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-  })
-  return mongoose
-}
+  });
+  return mongoose;
+};

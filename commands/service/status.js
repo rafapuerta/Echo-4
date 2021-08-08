@@ -1,10 +1,9 @@
 module.exports = {
     commands: ['status'],
     expectedArgs: '<text>',
-    permissionError: 'You need admind permission to run this command',
+    permissionError: 'Necesitas permiso de administrador para utilizar este comando',
     minArgs: 1,
     callback: (message, arguments, text, client) => {
-
         client.user.setPresence({
             activity: {
                 name: text,
