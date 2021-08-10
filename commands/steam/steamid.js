@@ -1,6 +1,7 @@
 const mongo = require("../../mongo");
 const userSchema = require("../../schemas/user-schema");
 
+
 module.exports = {
   commands: ["steamid"],
   minArgs: 0,
@@ -10,10 +11,17 @@ module.exports = {
     await mongo().then(async (mongoose) => {
       try {
         const result = await userSchema.findOne({ _id: member.id });
-        channel.send(`${message.member}, tu Steam ID es: **${result.steamID}**`);
-      } finally {
+        let msg = codeblock("bash", `/join ${result.steamID}`)
+        channel.send(`${message.member}, comparte este comando:` +  msg) 
+      }
+      finally {
         mongoose.connection.close();
       }
     });
   },
 };
+
+
+function codeblock(language, code){
+    return `\`\`\`${language}\n${code}\`\`\``;
+}
